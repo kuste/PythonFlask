@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+{% block title %}{{title}}{% endblock %}
+
+<div class="header text-center mt-5">
+  <h1>{{ mov['Title']}}</h1>
+  <h2>{{mov['Year']}}</h2>
+    {% if current_user.is_authenticated %}
+
+  <form action="{{ url_for('add_mov', mov_id=mov.imdbID) }}"  method="POST" class="favbtn" ">
+  <input class="btn btn-secondary btn-block" type="submit" value="Add to favorites"></input>
+  </form>
+  {% endif %}
+</div>
+<div class="mainWrapper">
+
+  <div class="item">
+    <div class="container">
+    <img src='{{mov["Poster"]}}'>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="container itemtext">
+    <div class="column1">
+      <h3>Title:</h3> <p>{{mov['Title']}}</p>
+      <h3>Year:</h3> <p>{{mov['Year']}}</p>
+      <h3>Rated:</h3> <p>{{mov['Rated']}}</p>
+      <h3>Released:</h3> <p>{{mov['Released']}}</p>
+    </div>
+    <div class="column2">
+      <h3>Runtime:</h3> <p>{{mov['Runtime']}}</p>
+      <h3>Director:</h3> <p>{{mov['Director']}}</p>
+      <h3>Country:</h3> <p>{{mov['Country']}}</p>
+      <h3>Box Office:</h3> <p>{{mov['BoxOffice']}}</p>
+    </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="progressBar">
+      {% for element in mov['Ratings'] %}
+      <h4>{{ element['Source']}}</h4>
+      <div id="myProgress">
+        <div class="myBar"> {{element['Value']}} </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+    <div class="item">
+      <div class="plotText">
+        <h3>Plot</h3>
+        <p>{{mov['Plot']}}</p>
+      </div>
+    </div>
+  <div class="item">
+    <div class="">
+      <div>
+        <h2>Genre</h2>
+        <p>{{ mov['Genre'] }}</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="item">
+      <div class="">
+        <h3>Actors:</h3> <p>{{mov['Actors']}}</p>
+      </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+  function move(value, elem) {
+    let width = 0;
+    let id = setInterval(frame, 10);
+
+    function frame() {
+      if (width >= value) {
+        clearInterval(id);
+      } else {
+        width++;
+        elem.style.width = width + '%';
+        elem.innerHTML = width * 1 + '%';
+      }
+    }
+  }
+
+  function convertNums(val) {
+    let s = val.split('/')
+    let rez = (s[0] / s[1]) * 100
+    return rez
+  }
+      let listaE = document.getElementsByClassName('myBar')
+      for(let i = 0 ; i<listaE.length; i++){
+      let tmpStr =  listaE[i].innerHTML
+      if(tmpStr.includes('%')){
+      listaE[i].addEventListener('load', move(tmpStr.split("%").join(''), listaE[i]))
+
+    }else{
+      let str1 = convertNums(tmpStr)
+      listaE[i].addEventListener('load', move(str1, listaE[i]))
+    }
+  }
+
+</script>
+
+{% endblock %}

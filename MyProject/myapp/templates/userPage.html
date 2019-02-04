@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+{% block title %}{{title}}{% endblock %}
+{% for e in mov %}
+<div class="header text-center mt-5">
+
+  <form action="{{ url_for('delete_mov', mov_id=e.imdbID) }}"  method="POST" class="favbtn" >
+  <input class="btn btn-secondary my-sm-0 btn-block" type="submit" value="Remove" ></input>
+  </form>
+</div>
+
+<div class="mainWrapper">
+
+  <div class="item">
+    <div class="container">
+    <img src='{{e["Poster"]}}'>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="container itemtext">
+    <div class="column1">
+      <h3>Title:</h3> <p>{{e['Title']}}</p>
+      <h3>Year:</h3> <p>{{e['Year']}}</p>
+      <h3>Rated:</h3> <p>{{e['Rated']}}</p>
+      <h3>Released:</h3> <p>{{e['Released']}}</p>
+    </div>
+    <div class="column2">
+      <h3>Runtime:</h3> <p>{{e['Runtime']}}</p>
+      <h3>Director:</h3> <p>{{e['Director']}}</p>
+      <h3>Country:</h3> <p>{{e['Country']}}</p>
+      <h3>Box Office:</h3> <p>{{e['BoxOffice']}}</p>
+    </div>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="progressBar">
+      {% for element in e['Ratings'] %}
+      <h4>{{ element['Source']}}</h4>
+      <div id="myProgress">
+        <div class="myBar"> {{element['Value']}} </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+    <div class="item">
+      <div class="plotText">
+        <h3>Plot</h3>
+        <p>{{e['Plot']}}</p>
+      </div>
+    </div>
+  <div class="item">
+    <div class="">
+      <div>
+        <h2>Genre</h2>
+        <p>{{ e['Genre'] }}</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="item">
+      <div class="">
+        <h3>Actors:</h3> <p>{{e['Actors']}}</p>
+      </div>
+    </div>
+
+</div>
+{% endfor %}
+
+<script type="text/javascript">
+
+  function move(value, elem) {
+    let width = 0;
+    let id = setInterval(frame, 10);
+
+    function frame() {
+      if (width >= value) {
+        clearInterval(id);
+      } else {
+        width++;
+        elem.style.width = width + '%';
+        elem.innerHTML = width * 1 + '%';
+      }
+    }
+  }
+
+  function convertNums(val) {
+    let s = val.split('/')
+    let rez = (s[0] / s[1]) * 100
+    return rez
+  }
+      let listaE = document.getElementsByClassName('myBar')
+      for(let i = 0 ; i<listaE.length; i++){
+      let tmpStr =  listaE[i].innerHTML
+      if(tmpStr.includes('%')){
+      listaE[i].addEventListener('load', move(tmpStr.split("%").join(''), listaE[i]))
+
+    }else{
+      let str1 = convertNums(tmpStr)
+      listaE[i].addEventListener('load', move(str1, listaE[i]))
+    }
+  }
+
+</script>
+
+{% endblock %}

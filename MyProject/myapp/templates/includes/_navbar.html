@@ -1,0 +1,38 @@
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<a class="navbar-brand" href="/">Movie selector</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+  {% if current_user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="/user">User Page</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">Logout</a>
+    </li>
+    <div>
+      <h3 class=" text-light " >  Welcome {{current_user.username}} <h3/>
+    </div>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="/register">Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/login">Login</a>
+    </li>
+    {% endif %}
+
+  </ul>
+  <form class="form-inline my-2 my-lg-0" method='post'>
+    <input id="searchinput" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="tag">
+    <button id="searchbtn"  class="btn btn-secondary my-2 my-sm-0" type="submit">Search A Movie</button>
+  </form>
+</div>
+</nav>
