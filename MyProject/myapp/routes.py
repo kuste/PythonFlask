@@ -11,6 +11,8 @@ filename ='myapp/idList/links.csv'
 API_key = '1446dc92'
 
 
+#metoda koja slucajnim odabirom bira id iz fajla koji sadrzi imdbID,
+#api ne dopusta direktno povlacenje popisa svih id-a pa je ovo bio jedini nacin
 def selectId():
     colnames=["movieId","imdbId","tmdbId"]
     data = pandas.read_csv(filename, names=colnames)
@@ -19,7 +21,7 @@ def selectId():
     chosen_id.replace(" ", "")
     return chosen_id
 
-
+#glavna ili home ruta generia api request na refresh ili na search upit
 @app.route('/', methods=['GET', 'POST'])
 def root():
     IMDB_ID = selectId()
@@ -39,6 +41,7 @@ def root():
 
 
 
+#dodaje fil iz root rute u bazu na klik botuna
 @app.route('/<mov_id>',methods=['GET','POST'])
 def add_mov(mov_id):
     if current_user.is_authenticated:
@@ -51,7 +54,7 @@ def add_mov(mov_id):
         flash('Movie added to favorites', 'sucess')
         return redirect(url_for('user'))
 
-
+#ruta za registraciju korisnika koja dodaje korisnika u bazu i redirekta korisnika na login.html
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -67,6 +70,7 @@ def register():
     return render_template('register.html',title='Register', form=form)
 
 
+#ruta koja logira korinika iz baze
 @app.route('/login',methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -83,12 +87,14 @@ def login():
 
     return render_template('login.html', title='Login',form=form)
 
+#ruta koja odlogira korisnika i redirecta na pocetnu stranu
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('root'))
 
 
+#ruta koja prekazuje korisnicku stranu sa sacuvanim filmovima
 @app.route('/user',methods=['GET', 'POST'])
 def user():
     if current_user.is_authenticated:
@@ -107,7 +113,7 @@ def user():
 
 
 
-
+#brize filmove iz baze na klik
 @app.route('/user/<mov_id>',methods=['GET','POST'])
 def delete_mov(mov_id):
     if current_user.is_authenticated:
