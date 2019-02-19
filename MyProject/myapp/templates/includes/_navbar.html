@@ -30,9 +30,9 @@
     {% endif %}
 
   </ul>
-  <form class="form-inline my-2 my-lg-0" method='post'>
+  <form class="form-inline my-2 my-lg-0" method='post' action="{{ url_for('search')}}">
     <input id="searchinput" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="tag">
-    <button id="searchbtn"  class="btn btn-secondary my-2 my-sm-0" type="submit">Search A Movie</button>
+    <button id="searchbtn"  class="btn btn-secondary my-2 my-sm-0" type="submit" ">Search A Movie</button>
   </form>
 </div>
 </nav>

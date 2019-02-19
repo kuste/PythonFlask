@@ -6,12 +6,13 @@
 <div class="header text-center mt-5">
   <h1>{{ mov['Title']}}</h1>
   <h2>{{mov['Year']}}</h2>
-    {% if current_user.is_authenticated %}
 
+  {% if current_user.is_authenticated %}
   <form action="{{ url_for('add_mov', mov_id=mov.imdbID) }}"  method="POST" class="favbtn" ">
   <input class="btn btn-secondary btn-block" type="submit" value="Add to favorites"></input>
   </form>
   {% endif %}
+
 </div>
 <div class="mainWrapper">
 
