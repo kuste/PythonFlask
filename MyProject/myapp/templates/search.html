@@ -3,49 +3,56 @@
 
 {% block title %}{{title}}{% endblock %}
 <div class="mainWrap">
-{% for e in mov.Search %}
+  {% for e in mov.Search %}
 
 
-<div class="wrapper">
+  <div class="wrapper">
 
-  {% if current_user.is_authenticated %}
-  <form action="{{ url_for('add_mov', mov_id=e.imdbID) }}"  method="POST" class="favbtn" ">
-  <input class="btn btn-secondary btn-block" type="submit" value="Add to favorites"></input>
-  </form>
-  {% endif %}
+    {% if current_user.is_authenticated %}
+    <form action="{{ url_for('add_mov', mov_id=e.imdbID) }}" method="POST" class="favbtn" ">
+  <input class=" btn
+      btn-secondary btn-block" type="submit" value="Add to favorites"></input>
+    </form>
+    {% endif %}
 
-  <div>
-    <div class="header1">
-    <div class="container">
-  <h4>{{e.Title}}<br>{{e.Year}}</h4>
-  </div>
-</div>
-</div>
+    <div>
+      <div class="header1">
+        <div class="container">
+          <h4>{{e.Title}}<br>{{e.Year}}</h4>
+        </div>
+      </div>
+    </div>
 
-<div class="conainer">
-  <div class="poster">
-    <a href="{{ url_for('display', id=e.imdbID) }}"><img src='{{e.Poster}}'></a>
-</div>
-</div>
+    <div class="conainer">
+      <div class="poster">
+        <a href="{{ url_for('display', id=e.imdbID) }}"><img src='{{e.Poster}}'></a>
+      </div>
+    </div>
 
-<div class="type">
+    <div class="type">
 
 
       <p>{{e.Type}}</p>
 
-</div>
-</div>
+    </div>
+  </div>
 
 
-{% endfor %}
+  {% endfor %}
+
+
 </div>
 <div class="pageSelect">
-  <form action="{{url_for('next',br ='2')}}" method="post">
-    <input name='button' type="submit" value="left"></input>
-    <button>{{br}}</button>
-    <button>...</button>
-    <button>{{mov.totalResults}}</button>
-    <input name='button' type="submit" value="right"></input>
+  <form action="{{url_for('selectPage',input = input,br = br)}}" method="post">
+    <input name='button' type="submit" value="Back">
+
+    <p class="btn_type">{{br}}</p>
+    <p class="btn_type">...</p>
+    <p class="btn_type">{{brStr}}</p>
+
+    <input name='button' type="submit" value="Next">
   </form>
+
+
 </div>
 {% endblock %}
