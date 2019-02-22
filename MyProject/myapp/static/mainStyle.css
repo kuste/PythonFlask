@@ -50,6 +50,7 @@ a {
   font-style: none;
   color: inherit;
 }
+
 a:hover{
   color: rgb(226, 226, 226) !important;
   text-decoration: none !important;
@@ -86,6 +87,18 @@ ul {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+  div.header a{
+  color: black !important;
+  text-decoration: none;
+  font-style: none;
+
+}
+div.header a:hover{
+  color: rgb(226, 226, 226) !important;
+  text-decoration: none !important;
+  font-style: none!important;
+
+}
 .mainWrapper {
   min-width: 420px;
   margin-top: 10px;

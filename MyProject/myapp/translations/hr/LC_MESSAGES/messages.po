@@ -1,0 +1,64 @@
+# Croatian translations for PROJECT.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-02-22 23:04+0100\n"
+"PO-Revision-Date: 2019-02-22 23:05+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: hr\n"
+"Language-Team: hr <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: templates/home.html:28
+msgid "Title:"
+msgstr "Naslov:"
+
+#: templates/home.html:29
+msgid "Year:"
+msgstr "Godina:"
+
+#: templates/home.html:30
+msgid "Rated:"
+msgstr "Ocjena:"
+
+#: templates/home.html:31
+msgid "Released:"
+msgstr "Izašao:"
+
+#: templates/home.html:34
+msgid "Runtime:"
+msgstr "Vrijeme trajanja:"
+
+#: templates/home.html:35
+msgid "Director:"
+msgstr "Redatelj:"
+
+#: templates/home.html:36
+msgid "Country:"
+msgstr "Država:"
+
+#: templates/home.html:37
+msgid "Box Office:"
+msgstr "Zarada:"
+
+#: templates/home.html:56
+msgid "Plot"
+msgstr "Radnja"
+
+#: templates/home.html:63
+msgid "Genre"
+msgstr "Žanr"
+
+#: templates/home.html:71
+msgid "Actors"
+msgstr "Glumci"

@@ -4,7 +4,7 @@
 {% block title %}{{title}}{% endblock %}
 
 <div class="header text-center mt-5">
-  <h1>{{ mov['Title']}}</h1>
+  <h1><a  target="_blank" href="{{link}}">{{ mov['Title']}}</a></h1>
   <h2>{{mov['Year']}}</h2>
 
   {% if current_user.is_authenticated %}
@@ -25,16 +25,16 @@
   <div class="item">
     <div class="container itemtext">
     <div class="column1">
-      <h3>Title:</h3> <p>{{mov['Title']}}</p>
-      <h3>Year:</h3> <p>{{mov['Year']}}</p>
-      <h3>Rated:</h3> <p>{{mov['Rated']}}</p>
-      <h3>Released:</h3> <p>{{mov['Released']}}</p>
+      <h3>{% trans %}Title:{% endtrans %}</h3> <p>{{mov['Title']}}</p>
+      <h3>{% trans %}Year:{% endtrans %}</h3> <p>{{mov['Year']}}</p>
+      <h3>{% trans %}Rated:{% endtrans %}</h3> <p>{{mov['Rated']}}</p>
+      <h3>{% trans %}Released:{% endtrans %}</h3> <p>{{mov['Released']}}</p>
     </div>
     <div class="column2">
-      <h3>Runtime:</h3> <p>{{mov['Runtime']}}</p>
-      <h3>Director:</h3> <p>{{mov['Director']}}</p>
-      <h3>Country:</h3> <p>{{mov['Country']}}</p>
-      <h3>Box Office:</h3> <p>{{mov['BoxOffice']}}</p>
+      <h3>{% trans %}Runtime:{% endtrans %}</h3> <p>{{mov['Runtime']}}</p>
+      <h3>{% trans %}Director:{% endtrans %}</h3> <p>{{mov['Director']}}</p>
+      <h3>{% trans %}Country:{% endtrans %}</h3> <p>{{mov['Country']}}</p>
+      <h3>{% trans %}Box Office:{% endtrans %}</h3> <p>{{mov['BoxOffice']}}</p>
     </div>
     </div>
   </div>
@@ -53,14 +53,14 @@
 
     <div class="item">
       <div class="plotText">
-        <h3>Plot</h3>
+        <h3>{% trans %}Plot{% endtrans %}</h3>
         <p>{{mov['Plot']}}</p>
       </div>
     </div>
   <div class="item">
     <div class="">
       <div>
-        <h2>Genre</h2>
+        <h2>{% trans %}Genre{% endtrans %}</h2>
         <p>{{ mov['Genre'] }}</p>
       </div>
     </div>
@@ -68,7 +68,7 @@
 
     <div class="item">
       <div class="">
-        <h3>Actors:</h3> <p>{{mov['Actors']}}</p>
+        <h3>{% trans %}Actors{% endtrans %}</h3> <p>{{mov['Actors']}}</p>
       </div>
     </div>
 
