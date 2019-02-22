@@ -16,6 +16,6 @@ Mogu se pretrazivati i po kljucnoj rijeci te se pregledavati po izlistanim stran
 #### Api   
 ##### [OMDb api](https://www.omdbapi.com/ "OBDb api homepage")
 
-OMDb API je RESTful web servis za dohvacanje informacije o filmovia, cijeli sadrzaj i slike na ovoj strani je postavljen i odrzavan od strane korisnika. Api omogucuje dohvacanje sadzaja prema IMDB id-u ili kljucnoj rijeci (vise detalja o samom apiju na njihovoj stranici)
+OMDb API je RESTful web servis za dohvacanje informacije o filmovima, cijeli sadrzaj i slike na ovoj strani je postavljen i odrzavan od strane korisnika. Api omogucuje dohvacanje sadzaja prema IMDB id-u ili kljucnoj rijeci (vise detalja o samom apiju na njihovoj stranici)
 
  
